@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Project.Models.Enrollment>
+
+@{ ViewData["Title"] = "List of enrollments"; }
+
+<h3>Enrolled students</h3>
+
+<table class="table">
+    <thead>
+       
+        <tr>
+           
+                <th>
+                    @Html.DisplayNameFor(model => model.Student)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Semester)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+             
+
+                <th></th>
+            
+            </tr>
+        
+        </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+
+        <tr>
+            @if (item.FinishDate == null)
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+       
+
+            }
+
+            </tr>
+        
+    }
+                </tbody>
+</table>
+
+<div>
+    <a asp-controller="Enrollments" >Back to Enrollments</a>
+</div>
